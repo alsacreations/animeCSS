@@ -10,6 +10,7 @@
 
 /* Base */
 body {
+  overflow-x: clip;
   background-color: var(--surface);
   background-image:
     radial-gradient(at 10% 10%, var(--layer-2) 0%, transparent 40%),
