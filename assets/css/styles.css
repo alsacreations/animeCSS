@@ -63,6 +63,11 @@ h3 {
   text-align: center;
 }
 
+.discrete {
+  font-size: var(--text-s);
+  color: var(--color-gray-500);
+}
+
 /* Header & Nav */
 header {
   padding-block: var(--spacing-xl);
