@@ -27,15 +27,20 @@ Une démo est disponible dans le fichier `demo.html`.
 
 Ajoutez l'attribut `data-anime` sur n'importe quel élément HTML. Vous pouvez combiner plusieurs mots-clés :
 
-1. **Type** : `slide-up`, `slide-left`, `slide-right`, `fade-up`, `fade-left`, `fade-right`, `zoom`, `reveal`, `flip-y`, `flip-x`.
-   - Variantes discrètes (mouvement de 40px) : `slide-up-discrete`, `slide-left-discrete`, `slide-right-discrete`, `fade-up-discrete`, `fade-left-discrete`, `fade-right-discrete`.
+1. **Type** : `slide-up`, `slide-left`, `slide-right`, `fade-up`, `fade-left`, `fade-right`, `pulse`, `reveal`, `flip-y`, `flip-x`.
 2. **Moment** :
    - `entry` : Déclenche l'animation lorsque l'élément entre dans la vue.
    - `exit` : Déclenche l'animation lorsque l'élément sort de la vue.
    - `entry exit` : Déclenche l'animation lorsque l'élément entre et sort de la vue.
-3. **Easing (Optionnel)** :
+3. **Easing** :
    - `bounce` : Ajoute un effet de rebond.
-4. **Delay (Optionnel)** :
+   - `pulse` : Variante de timing (aussi disponible en type d'animation).
+4. **Offset (Distance)** :
+   - (par défaut) : 40px
+   - `offset` (ou `offset-s`) : 60px
+   - `offset-m` : 50%
+   - `offset-l` : 100%
+5. **Delay** :
    - `delay-s` (ou `delay`) : Retarde l'animation de 3% du scroll.
    - `delay-m` : Retarde l'animation de 6% du scroll.
    - `delay-l` : Retarde l'animation de 9% du scroll.
@@ -46,8 +51,8 @@ Ajoutez l'attribut `data-anime` sur n'importe quel élément HTML. Vous pouvez c
 <!-- Apparition en glissant vers le haut -->
 <div data-anime="slide-up entry">...</div>
 
-<!-- Zoom avec effet bounce -->
-<div data-anime="zoom entry bounce">...</div>
+<!-- Pulse avec effet bounce -->
+<div data-anime="pulse entry bounce">...</div>
 
 <!-- Cumul entrée et sortie -->
 <div data-anime="fade-up entry exit">...</div>

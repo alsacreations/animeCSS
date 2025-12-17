@@ -213,3 +213,67 @@ button:hover {
   color: var(--on-primary);
   border-color: var(--primary);
 }
+
+/* Result Code */
+.result-code-container {
+  position: relative;
+}
+[id="copy-btn"] {
+  position: absolute;
+  top: 50%;
+  right: var(--spacing-16);
+  translate: 0 -50%;
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: var(--text-s);
+  border: 0;
+  border-radius: var(--radius-16);
+  box-shadow: none;
+}
+
+/* Footer */
+.footer {
+  padding-block: var(--spacing-xl) var(--spacing-l);
+}
+.logo-alsacreations-pepins-inner {
+  fill: var(--surface);
+}
+
+.footer-alsa {
+  text-align: center;
+
+  & p {
+    margin: 0;
+  }
+
+  & .logo-alsacreations {
+    width: 150px;
+  }
+}
+
+.logo-link {
+  display: inline-block;
+  margin: auto;
+  color: var(--accent);
+
+  @media (width >= 48rem) {
+    &:focus,
+    &:hover {
+      animation: spaceboots 2s linear infinite alternate;
+    }
+  }
+}
+
+.btn-github {
+  --button-background-color: oklch(51.33% 0.18 256.37);
+  --button-background-color-hover: oklch(
+    from oklch(51.33% 0.18 256.37) calc(l * 0.9) c h
+  );
+  --button-border-color: transparent;
+  --button-text-color: var(--color-white);
+  color: var(--color-white);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-white);
+  }
+}

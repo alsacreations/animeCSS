@@ -1,7 +1,7 @@
 /* -----------------------/*
  * AnimeCSS
  * Made par Alsacréations
- * Mise à jour : 2025-12-16
+ * Mise à jour : 2025-12-17
  /* ---------------------- */
 
 /* View Transition API */
@@ -51,8 +51,7 @@
 /* Scroll-driven Animations */
 @supports (animation-timeline: view()) {
   [data-anime] {
-    --anime-spacing-discrete: 40px;
-    --anime-spacing-normal: 100%;
+    --anime-offset: 40px;
 
     animation-duration: auto;
     animation-timing-function: linear;
@@ -60,8 +59,23 @@
     animation-fill-mode: both;
   }
 
+  /* Easings */
   [data-anime*="bounce"] {
-    animation-timing-function: cubic-bezier(0.09, 0.77, 0.02, 1.31);
+    animation-timing-function: cubic-bezier(0.15, 1.12, 0.26, 1.46);
+  }
+
+  /* Offsets */
+  [data-anime*="offset"],
+  [data-anime*="offset-s"] {
+    --anime-offset: 80px;
+  }
+
+  [data-anime*="offset-m"] {
+    --anime-offset: 50%;
+  }
+
+  [data-anime*="offset-l"] {
+    --anime-offset: 100%;
   }
 
   /* Ranges */
@@ -74,16 +88,16 @@
     animation-direction: var(--animation-direction-entry);
 
     &[data-anime*="delay"],
-    &[data-anime*="delay-s  "] {
-      --animation-range-entry: cover 13% cover 33%;
+    &[data-anime*="delay-s"] {
+      --animation-range-entry: cover 14% cover 34%;
     }
 
     &[data-anime*="delay-m"] {
-      --animation-range-entry: cover 16% cover 36%;
+      --animation-range-entry: cover 18% cover 38%;
     }
 
     &[data-anime*="delay-l"] {
-      --animation-range-entry: cover 19% cover 39%;
+      --animation-range-entry: cover 22% cover 42%;
     }
   }
 
@@ -97,15 +111,15 @@
 
     &[data-anime*="delay"],
     &[data-anime*="delay-s"] {
-      --animation-range-exit: cover 67% cover 87%;
+      --animation-range-exit: cover 66% cover 86%;
     }
 
     &[data-anime*="delay-m"] {
-      --animation-range-exit: cover 64% cover 84%;
+      --animation-range-exit: cover 62% cover 82%;
     }
 
     &[data-anime*="delay-l"] {
-      --animation-range-exit: cover 61% cover 81%;
+      --animation-range-exit: cover 58% cover 78%;
     }
   }
 
@@ -136,22 +150,6 @@
     --animation-direction-exit: normal;
   }
 
-  [data-anime*="slide-left-discrete"] {
-    --animation-name-entry: slide-left-discrete;
-    --animation-name-exit: slide-left-discrete;
-  }
-
-  [data-anime*="slide-right-discrete"] {
-    --animation-name-entry: slide-right-discrete;
-    --animation-name-exit: slide-right-discrete;
-  }
-
-  [data-anime*="slide-up-discrete"] {
-    --animation-name-entry: slide-up-discrete;
-    --animation-name-exit: slide-up-exit-discrete;
-    --animation-direction-exit: normal;
-  }
-
   /* Fade */
   [data-anime*="fade-left"] {
     --animation-name-entry: fade-left;
@@ -169,26 +167,10 @@
     --animation-direction-exit: normal;
   }
 
-  [data-anime*="fade-left-discrete"] {
-    --animation-name-entry: fade-left-discrete;
-    --animation-name-exit: fade-left-discrete;
-  }
-
-  [data-anime*="fade-right-discrete"] {
-    --animation-name-entry: fade-right-discrete;
-    --animation-name-exit: fade-right-discrete;
-  }
-
-  [data-anime*="fade-up-discrete"] {
-    --animation-name-entry: fade-up-discrete;
-    --animation-name-exit: fade-up-exit-discrete;
-    --animation-direction-exit: normal;
-  }
-
-  /* Zoom */
-  [data-anime*="zoom"] {
-    --animation-name-entry: zoom;
-    --animation-name-exit: zoom;
+  /* Pulse */
+  [data-anime*="pulse"] {
+    --animation-name-entry: pulse;
+    --animation-name-exit: pulse;
   }
 
   /* Reveal */
@@ -307,7 +289,7 @@
 /* Slide */
 @keyframes slide-left {
   from {
-    translate: calc(-1 * var(--anime-spacing-normal, 100%));
+    translate: calc(-1 * var(--anime-offset, 40px));
   }
 
   to {
@@ -317,7 +299,7 @@
 
 @keyframes slide-right {
   from {
-    translate: var(--anime-spacing-normal, 100%);
+    translate: var(--anime-offset, 40px);
   }
 
   to {
@@ -327,7 +309,7 @@
 
 @keyframes slide-up {
   from {
-    translate: 0 var(--anime-spacing-normal, 100%);
+    translate: 0 var(--anime-offset, 40px);
   }
 
   to {
@@ -341,54 +323,14 @@
   }
 
   to {
-    translate: 0 calc(-1 * var(--anime-spacing-normal, 100%));
-  }
-}
-
-@keyframes slide-left-discrete {
-  from {
-    translate: calc(-1 * var(--anime-spacing-discrete, 40px));
-  }
-
-  to {
-    translate: 0;
-  }
-}
-
-@keyframes slide-right-discrete {
-  from {
-    translate: var(--anime-spacing-discrete, 40px);
-  }
-
-  to {
-    translate: 0;
-  }
-}
-
-@keyframes slide-up-discrete {
-  from {
-    translate: 0 var(--anime-spacing-discrete, 40px);
-  }
-
-  to {
-    translate: 0;
-  }
-}
-
-@keyframes slide-up-discrete-exit {
-  from {
-    translate: 0;
-  }
-
-  to {
-    translate: 0 calc(-1 * var(--anime-spacing-discrete, 40px));
+    translate: 0 calc(-1 * var(--anime-offset, 40px));
   }
 }
 
 /* Fade */
 @keyframes fade-left {
   from {
-    translate: calc(-1 * var(--anime-spacing-normal, 100%));
+    translate: calc(-1 * var(--anime-offset, 40px));
     opacity: 0%;
   }
 
@@ -400,7 +342,7 @@
 
 @keyframes fade-right {
   from {
-    translate: var(--anime-spacing-normal, 100%);
+    translate: var(--anime-offset, 40px);
     opacity: 0%;
   }
 
@@ -412,7 +354,7 @@
 
 @keyframes fade-up {
   from {
-    translate: 0 var(--anime-spacing-normal, 100%);
+    translate: 0 var(--anime-offset, 40px);
     opacity: 0%;
   }
 
@@ -429,63 +371,19 @@
   }
 
   to {
-    translate: 0 calc(-1 * var(--anime-spacing-normal, 100%));
+    translate: 0 calc(-1 * var(--anime-offset, 40px));
     opacity: 0%;
   }
 }
 
-@keyframes fade-left-discrete {
-  from {
-    translate: calc(-1 * var(--anime-spacing-discrete, 40px));
-    opacity: 0%;
-  }
-
-  to {
-    translate: 0;
-    opacity: 100%;
-  }
-}
-
-@keyframes fade-right-discrete {
-  from {
-    translate: var(--anime-spacing-discrete, 40px);
-    opacity: 0%;
-  }
-
-  to {
-    translate: 0;
-    opacity: 100%;
-  }
-}
-
-@keyframes fade-up-discrete {
-  from {
-    translate: 0 var(--anime-spacing-discrete, 40px);
-    opacity: 0%;
-  }
-
-  to {
-    translate: 0;
-    opacity: 100%;
-  }
-}
-
-@keyframes fade-up-discrete-exit {
-  from {
-    translate: 0;
-    opacity: 100%;
-  }
-
-  to {
-    translate: 0 calc(-1 * var(--anime-spacing-discrete, 40px));
-    opacity: 0%;
-  }
-}
-
-/* Zoom */
-@keyframes zoom {
+/* Pulse */
+@keyframes pulse {
   from {
     scale: 0.8;
+  }
+
+  50% {
+    scale: 1.05;
   }
 
   to {
@@ -496,7 +394,7 @@
 /* Reveal */
 @keyframes reveal {
   from {
-    opacity: 50%;
+    opacity: 0%;
   }
 
   to {
